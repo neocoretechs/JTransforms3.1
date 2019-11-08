@@ -86,7 +86,27 @@ public class IOUtils
         }
         return sqrt(rms / a.length);
     }
-
+    /**
+     * Computes root mean square error between a and b for a given size.
+     *
+     * @param a input parameter
+     * @param b input parameter
+     *
+     * @return root mean squared error between a and b
+     */
+    public static double computeRMSE(float[] a, float[] b, int nsize)
+    {
+        if (a.length < nsize && b.length < nsize) {
+            throw new IllegalArgumentException("Arrays a length "+a.length+" b length "+b.length+" are both smaller than target size "+nsize);
+        }
+        double rms = 0;
+        double tmp;
+        for (int i = 0; i < nsize; i++) {
+            tmp = (a[i] - b[i]);
+            rms += tmp * tmp;
+        }
+        return sqrt(rms / nsize);
+    }
     /**
      * Computes root mean square error between a and b.
      *
@@ -195,7 +215,28 @@ public class IOUtils
         }
         return sqrt(rms / a.length);
     }
-
+    
+    /**
+     * Computes root mean square error between a and b.
+     *
+     * @param a input parameter
+     * @param b input parameter
+     *
+     * @return root mean squared error between a and b
+     */
+    public static double computeRMSE(double[] a, double[] b, int nsize)
+    {
+        if (a.length < nsize && b.length < nsize) {
+            throw new IllegalArgumentException("Arrays a length "+a.length+" b length "+b.length+" are both smaller than target size "+nsize);
+        }
+        double rms = 0;
+        double tmp;
+        for (int i = 0; i < nsize; i++) {
+            tmp = (a[i] - b[i]);
+            rms += tmp * tmp;
+        }
+        return sqrt(rms / nsize);
+    }
     /**
      * Computes root mean square error between a and b.
      *
